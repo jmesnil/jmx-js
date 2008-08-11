@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jmx-js" default="jar">
+    <description>
+            A JavaScript Bridge for JMX
+    </description>
+
+    <target name="jar" depends="compile" description="-> create jmx-js.jar">
+        <delete file="build/jmx-js.jar" />
+        <jar destfile="build/jmx-js.jar" manifest="META-INF/MANIFEST.MF">
+            <fileset dir="build" includes="**" />
+        </jar>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build" />
+        <javac srcdir="src" destdir="build" />
+    </target>
+
+    <target name="clean">
+        <delete dir="build" />
+    </target>
+</project>

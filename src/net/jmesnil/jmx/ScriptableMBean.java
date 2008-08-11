@@ -32,7 +32,6 @@ import javax.management.ObjectName;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.FunctionObject;
-import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptRuntime;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
@@ -107,9 +106,11 @@ public class ScriptableMBean extends ScriptableObject {
 	public Object get(String name, Scriptable arg1) {
 		if (attributes.containsKey(name)) {
 			try {
-				return NativeJavaObject.wrap(ScriptRuntime
-						.getTopCallScope(Context.getCurrentContext()), mbsc
-						.getAttribute(on, attributes.get(name)), Object.class);
+				Context context = Context.getCurrentContext();
+				Scriptable scope = ScriptRuntime.getTopCallScope(context);
+				return context.getWrapFactory().wrap(context, scope,
+						mbsc.getAttribute(on, attributes.get(name)),
+						Object.class);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return getUndefinedValue();

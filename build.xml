@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="jmx-js" default="jar">
     <description>
-            A JavaScript Bridge for JMX
+     A JavaScript Bridge for JMX.
+     http://github.com/jmesnil/jmx-js
     </description>
 
+    <property name="build.dir" value="build" />
+    <property name="build.classes.dir" value="${build.dir}/classes" />
+    <property name="jar.file" value="${build.dir}/jmx-js.jar" />
+
     <target name="jar" depends="compile" description="-> create jmx-js.jar">
-        <delete file="build/jmx-js.jar" />
-        <jar destfile="build/jmx-js.jar" manifest="META-INF/MANIFEST.MF">
-            <fileset dir="build" includes="**" />
+        <delete file="${jar.file}" />
+        <jar destfile="${jar.file}" manifest="META-INF/MANIFEST.MF">
+            <fileset dir="${build.classes.dir}" includes="**" />
         </jar>
     </target>
 
-    <target name="compile">
-        <mkdir dir="build" />
-        <javac srcdir="src" destdir="build" />
+    <target name="compile" description="-> compile the project">
+        <mkdir dir="${build.classes.dir}" />
+        <javac source="1.6" srcdir="src" destdir="${build.classes.dir}" />
     </target>
 
-    <target name="clean">
-        <delete dir="build" />
+    <target name="clean" description="-> clean the project">
+        <delete dir="${build.dir}" />
     </target>
 </project>

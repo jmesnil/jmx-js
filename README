@@ -3,6 +3,12 @@ jmx4r is a JavaScript bridge for JMX
 It can be used to write simple JavaScripts to manage remote Java applications (e.g. JBoss[http://www.jboss.org],
 Tomcat[http://tomcat.apache.org/]) using JMX[http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/].
 
+== Requirements
+
+This bridge works only on Java 6 with a JavaScript engine.
+This is the case by default for Sun's JVM on Linux and Windows.
+For Mac OS X, there are additional steps[http://jmesnil.net/weblog/2008/05/14/how-to-include-javascript-engine-in-apples-java-6-vm/].
+
 == Examples 
 
 To trigger a garbage collection on a Java application:
@@ -38,7 +44,7 @@ on the port 3000.
    
 == How to write scripts
 
-An object "mbsc" can be used to retrieve MBean:
+* An object "mbsc" can be used to retrieve MBean:
   
    var mbean = mbsc.getMBean('java.lang:type=Memory');  
    
@@ -46,6 +52,6 @@ An object "mbsc" can be used to retrieve MBean:
    
    var mbeans = mbsc.getMBeans('java.lang:type=MemoryPool,*');
    
-An object "args" contains all the remaning arguments passed on the command line after removing the file name and the optional host and port.
+* An object "args" contains all the remaning arguments passed on the command line after removing the file name and the optional host and port.
 For example, if the script is run with "java -jar jmx-js.jar logging.js -p 3000 FINEST", in the script, args[0] is set to "FINEST".
    

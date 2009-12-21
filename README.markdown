@@ -1,20 +1,21 @@
 jmx4r is a JavaScript bridge for JMX
 
-It can be used to write simple JavaScripts to manage remote Java applications (e.g. JBoss[http://www.jboss.org],
-Tomcat[http://tomcat.apache.org/]) using JMX[http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/].
+It can be used to write simple JavaScripts to manage remote Java applications (e.g. [JBoss](http://www.jboss.org),
+[Tomcat](http://tomcat.apache.org/)) using [JMX](http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/).
 
-== Requirements
+## Requirements
 
 This bridge works only on Java 6 with a JavaScript engine.
 This is the case by default for Sun's JVM on Linux and Windows.
-For Mac OS X, there are additional steps[http://jmesnil.net/weblog/2008/05/14/how-to-include-javascript-engine-in-apples-java-6-vm/]:
 
-* Download JSR 223’s engines[https://scripting.dev.java.net/files/documents/4957/37593/jsr223-engines.zip]
+For Mac OS X, there are [additional steps](http://jmesnil.net/weblog/2008/05/14/how-to-include-javascript-engine-in-apples-java-6-vm/):
+
+* Download [JSR 223’s engines](https://scripting.dev.java.net/files/documents/4957/37593/jsr223-engines.zip)
 * Copy jsr223-engines/javascript/build/js-engine.jar to /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/lib/ext/
-* Download [Mozilla Rhino 1.7.R1[ftp://ftp.mozilla.org/pub/mozilla.org/js/rhino1_7R1.zip]
+* Download [Mozilla Rhino 1.7.R1](ftp://ftp.mozilla.org/pub/mozilla.org/js/rhino1_7R1.zip)
 * Copy rhino1_7R1/js.jar to /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/lib/ext/
 
-== Examples
+## Examples
 
 To trigger a garbage collection on a Java application:
 
@@ -40,7 +41,7 @@ To trigger a garbage collection on a Java application:
 This expects the remote Java application (jconsole started at step 0) running 
 on localhost to accept remote JMX connection on the port 3000.
 
-== How to build
+## How to Build
 
 1. Retrieve the project:
 
@@ -51,7 +52,7 @@ on localhost to accept remote JMX connection on the port 3000.
 
    ant jar
 
-== How to write scripts
+## How to Write Scripts
 
 * An object "mbsc" can be used to retrieve MBean:
   

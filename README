@@ -9,9 +9,9 @@ This bridge works only on Java 6 with a JavaScript engine.
 This is the case by default for Sun's JVM on Linux and Windows.
 For Mac OS X, there are additional steps[http://jmesnil.net/weblog/2008/05/14/how-to-include-javascript-engine-in-apples-java-6-vm/]:
 
-* Download [JSR 223’s engines](https://scripting.dev.java.net/files/documents/4957/37593/jsr223-engines.zip)
+* Download JSR 223’s engines[https://scripting.dev.java.net/files/documents/4957/37593/jsr223-engines.zip]
 * Copy jsr223-engines/javascript/build/js-engine.jar to /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/lib/ext/
-* Download [Mozilla Rhino 1.7.R1](ftp://ftp.mozilla.org/pub/mozilla.org/js/rhino1_7R1.zip)
+* Download [Mozilla Rhino 1.7.R1[ftp://ftp.mozilla.org/pub/mozilla.org/js/rhino1_7R1.zip]
 * Copy rhino1_7R1/js.jar to /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/lib/ext/
 
 == Examples

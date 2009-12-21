@@ -19,49 +19,49 @@ For Mac OS X, there are [additional steps](http://jmesnil.net/weblog/2008/05/14/
 
 To trigger a garbage collection on a Java application:
 
-0. Run a java application:
+First, run a Java application:
 
     jconsole \
-        -J-Dcom.sun.management.jmxremote \
-        -J-Dcom.sun.management.jmxremote.port=3000 \
-        -J-Dcom.sun.management.jmxremote.ssl=false \
-        -J-Dcom.sun.management.jmxremote.authenticate=false
+      -J-Dcom.sun.management.jmxremote \
+      -J-Dcom.sun.management.jmxremote.port=3000 \
+      -J-Dcom.sun.management.jmxremote.ssl=false \
+      -J-Dcom.sun.management.jmxremote.authenticate=false
 
-1. Create a file "memory.js".
+Then, create a file "memory.js":
 
     var memory = mbsc.getMBean('java.lang:type=Memory');
-
+    
     memory.gc();
     print("after gc: " + memory.heapMemoryUsage.get("used"));
 
-2. Run the script to trigger a GC on a remote Java application:
+Finally, run the script to trigger a GC on the remote Java application:
 
-   java -jar build/jmx-js.jar memory.js -p 3000 example/memory.js
-   
-This expects the remote Java application (jconsole started at step 0) running 
+    java -jar build/jmx-js.jar memory.js -p 3000 example/memory.js
+
+This expects the remote Java application (e.g. jconsole) running 
 on localhost to accept remote JMX connection on the port 3000.
 
 ## How to Build
 
-1. Retrieve the project:
+Retrieve the project:
 
-   git clone git://github.com/jmesnil/jmx-js.git
-   cd jmx-js
-   
-2. Build the jar
+    git clone git://github.com/jmesnil/jmx-js.git
+    cd jmx-js
 
-   ant jar
+Build the jar
+
+    ant jar
 
 ## How to Write Scripts
 
-* An object "mbsc" can be used to retrieve MBean:
-  
-   var mbean = mbsc.getMBean('java.lang:type=Memory');  
-   
-   or
-   
-   var mbeans = mbsc.getMBeans('java.lang:type=MemoryPool,*');
-   
-* An object "args" contains all the remaning arguments passed on the command line after removing the file name and the optional host and port.
+An object "mbsc" can be used to retrieve MBean:
+
+    var mbean = mbsc.getMBean('java.lang:type=Memory');  
+
+or
+
+    var mbeans = mbsc.getMBeans('java.lang:type=MemoryPool,*');
+
+An object "args" contains all the remaning arguments passed on the command line after removing the file name and the optional host and port.
 For example, if the script is run with "java -jar jmx-js.jar logging.js -p 3000 FINEST", in the script, args[0] is set to "FINEST".
    
